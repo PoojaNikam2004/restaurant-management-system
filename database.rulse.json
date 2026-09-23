@@ -1,0 +1,62 @@
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "auth !== null && auth.uid === $uid",
+        ".write": "auth !== null && auth.uid === $uid",
+        ".validate": "(!data.exists() && newData.child('role').val() === 'customer') || newData.child('role').val() === data.child('role').val() || root.child('users').child(auth.uid).child('role').val() === 'admin'",
+        "role": {
+          ".write": "auth !== null && root.child('users').child(auth.uid).child('role').val() === 'admin'"
+        }
+      }
+    },
+    "menuItems": {
+      ".read": true,
+      ".write": "auth !== null && root.child('users').child(auth.uid).child('role').val() === 'admin'"
+    },
+    "ads": {
+      ".read": true,
+      ".write": "auth !== null && root.child('users').child(auth.uid).child('role').val() === 'admin'"
+    },
+    "settings": {
+      ".read": true,
+      ".write": "auth !== null && root.child('users').child(auth.uid).child('role').val() === 'admin'"
+    },
+    "orders": {
+      ".read": "auth !== null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
+      "$uid": {
+        ".read": "auth !== null && (auth.uid === $uid || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+        "$orderId": {
+          ".write": "auth !== null && auth.uid === $uid",
+          ".validate": "newData.child('uid').val() === $uid",
+          "status": {
+            ".validate": "!data.exists() ? newData.val() === 'created' : (data.val() === 'created' && (newData.val() === 'paid' || newData.val() === 'failed'))"
+          },
+          "lines": { ".write": "!data.parent().exists()" },
+          "totalAmount": { ".write": "!data.parent().exists()" },
+          "razorpayOrderId": { ".write": "!data.parent().exists()" },
+          "createdAt": { ".write": "!data.parent().exists()" },
+          "tableNumber": { ".write": "!data.parent().exists()" },
+          "orderNumber": {
+            ".write": "!data.parent().child('orderNumber').exists() && root.child('orders').child($uid).child($orderId).child('status').val() === 'created'"
+          }
+        }
+      }
+    },
+    "orderCounter": {
+      ".read": "auth !== null",
+      ".write": "auth !== null"
+    },
+    "kitchenQueue": {
+      ".read": "auth !== null && (root.child('users').child(auth.uid).child('role').val() === 'admin' || root.child('users').child(auth.uid).child('role').val() === 'kitchen')",
+      "$orderId": {
+        ".read": "auth !== null && root.child('kitchenQueue').child($orderId).child('uid').val() === auth.uid",
+        ".write": "auth !== null && (!data.exists() || root.child('users').child(auth.uid).child('role').val() === 'admin' || root.child('users').child(auth.uid).child('role').val() === 'kitchen')",
+        ".validate": "!data.exists() ? (newData.child('uid').val() === auth.uid && newData.child('orderId').val() === $orderId && newData.child('status').val() === 'queued' && root.child('orders').child(auth.uid).child($orderId).child('status').val() === 'paid') : true",
+        "status": {
+          ".validate": "newData.val() === 'queued' || newData.val() === 'preparing' || newData.val() === 'ready' || newData.val() === 'served'"
+        }
+      }
+    }
+  }
+}

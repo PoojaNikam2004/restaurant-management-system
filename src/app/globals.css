@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #2b1c14;
+
+  --color-terracotta-50: #fdf3ee;
+  --color-terracotta-100: #fbe4d6;
+  --color-terracotta-200: #f6c6a8;
+  --color-terracotta-300: #eea474;
+  --color-terracotta-400: #e37f47;
+  --color-terracotta-500: #e2632a;
+  --color-terracotta-600: #c94f1c;
+  --color-terracotta-700: #a33f18;
+  --color-terracotta-800: #83341a;
+  --color-terracotta-900: #5f2818;
+
+  --color-saffron-50: #fffaeb;
+  --color-saffron-100: #fef0c2;
+  --color-saffron-200: #fddf85;
+  --color-saffron-300: #fcc847;
+  --color-saffron-400: #fbb01f;
+  --color-saffron-500: #f2930c;
+  --color-saffron-600: #d1710a;
+  --color-saffron-700: #ad520d;
+
+  --color-cream-50: #fffdfa;
+  --color-cream-100: #fff8f0;
+  --color-cream-200: #fbeee0;
+  --color-cream-300: #f0dcc0;
+
+  /* pastel accents for cards, badges, placeholder art */
+  --color-coral-100: #ffe4e0;
+  --color-coral-300: #ffab9d;
+  --color-coral-500: #ff6b52;
+  --color-coral-700: #c23f2c;
+
+  --color-mint-100: #dcf5e7;
+  --color-mint-300: #8fdcae;
+  --color-mint-500: #2fb371;
+  --color-mint-700: #1c7f4d;
+
+  --color-butter-100: #fff3cf;
+  --color-butter-300: #ffdd7a;
+  --color-butter-500: #f3b62b;
+  --color-butter-700: #b9800a;
+
+  --color-sky-100: #dcf0fb;
+  --color-sky-300: #8ccdef;
+  --color-sky-500: #339cd6;
+  --color-sky-700: #216f9c;
+
+  --color-plum-100: #f2e3f7;
+  --color-plum-300: #d5a4e6;
+  --color-plum-500: #a555c9;
+  --color-plum-700: #723a91;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --color-terracotta-50: var(--color-terracotta-50);
+  --color-terracotta-100: var(--color-terracotta-100);
+  --color-terracotta-200: var(--color-terracotta-200);
+  --color-terracotta-300: var(--color-terracotta-300);
+  --color-terracotta-400: var(--color-terracotta-400);
+  --color-terracotta-500: var(--color-terracotta-500);
+  --color-terracotta-600: var(--color-terracotta-600);
+  --color-terracotta-700: var(--color-terracotta-700);
+  --color-terracotta-800: var(--color-terracotta-800);
+  --color-terracotta-900: var(--color-terracotta-900);
+
+  --color-saffron-50: var(--color-saffron-50);
+  --color-saffron-100: var(--color-saffron-100);
+  --color-saffron-200: var(--color-saffron-200);
+  --color-saffron-300: var(--color-saffron-300);
+  --color-saffron-400: var(--color-saffron-400);
+  --color-saffron-500: var(--color-saffron-500);
+  --color-saffron-600: var(--color-saffron-600);
+  --color-saffron-700: var(--color-saffron-700);
+
+  --color-cream-50: var(--color-cream-50);
+  --color-cream-100: var(--color-cream-100);
+  --color-cream-200: var(--color-cream-200);
+  --color-cream-300: var(--color-cream-300);
+
+  --color-coral-100: var(--color-coral-100);
+  --color-coral-300: var(--color-coral-300);
+  --color-coral-500: var(--color-coral-500);
+  --color-coral-700: var(--color-coral-700);
+
+  --color-mint-100: var(--color-mint-100);
+  --color-mint-300: var(--color-mint-300);
+  --color-mint-500: var(--color-mint-500);
+  --color-mint-700: var(--color-mint-700);
+
+  --color-butter-100: var(--color-butter-100);
+  --color-butter-300: var(--color-butter-300);
+  --color-butter-500: var(--color-butter-500);
+  --color-butter-700: var(--color-butter-700);
+
+  --color-sky-100: var(--color-sky-100);
+  --color-sky-300: var(--color-sky-300);
+  --color-sky-500: var(--color-sky-500);
+  --color-sky-700: var(--color-sky-700);
+
+  --color-plum-100: var(--color-plum-100);
+  --color-plum-300: var(--color-plum-300);
+  --color-plum-500: var(--color-plum-500);
+  --color-plum-700: var(--color-plum-700);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #kitchen-ticket-print,
+  #kitchen-ticket-print * {
+    visibility: visible;
+  }
+  #kitchen-ticket-print {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px;
+    color: #000;
+  }
+}
