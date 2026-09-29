@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { useCheckout } from "@/lib/useCheckout";
 
+
 export default function CartPanel() {
   const { lines, totalPrice, setQuantity, removeItem } = useCart();
   const { state, error, lastOrderNumber, startCheckout, reset } =
