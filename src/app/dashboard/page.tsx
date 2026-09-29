@@ -182,7 +182,7 @@ function DashboardContent() {
 
           <Link
             href="/menu"
-            className="group relative flex items-center justify-between overflow-hidden rounded-3xl border border-terracotta-200 bg-gradient-to-r from-terracotta-500 to-coral-500 px-6 py-5 shadow-sm transition-shadow hover:shadow-md sm:px-8"
+            className="group relative flex items-center justify-between overflow-hidden rounded-3xl border border-terracotta-200 bg-linear-to-r from-terracotta-500 to-coral-500 px-6 py-5 shadow-sm transition-shadow hover:shadow-md sm:px-8"
           >
             <div
               aria-hidden
